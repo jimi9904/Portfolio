@@ -676,38 +676,109 @@ html[data-theme="light"] .icon-dark  { display: none; }
 }
 
 /* ============================================================
-   SKILLS
+   SKILLS  — Toolkit Card Grid
    ============================================================ */
-.skills-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
+
+/* Big editorial heading */
+.toolkit-heading {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 52px;
 }
-.skill-group-title {
-  font-family: var(--mono);
-  font-size: 0.72rem;
+.toolkit-heading em {
+  font-style: italic;
+  font-weight: 300;
   color: var(--amber);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  margin-bottom: 14px;
 }
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+
+/* 4-column card grid */
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
-.skill-tag {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--muted);
+
+/* Individual card */
+.toolkit-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--rad-sm);
-  padding: 5px 14px;
-  transition: color var(--tr), border-color var(--tr), background var(--tr);
+  border-radius: var(--radius);
+  padding: 28px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color var(--tr), transform var(--tr), box-shadow var(--tr);
+  position: relative;
+  overflow: hidden;
 }
-.skill-tag:hover {
+.toolkit-card:hover {
+  border-color: var(--amber-bdr);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.25), 0 0 0 1px var(--amber-bdr);
+}
+
+/* Top row: number + orb */
+.toolkit-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+/* Big number */
+.toolkit-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--amber);
+  line-height: 1;
+}
+
+/* Decorative circle (matches the reference purple circle, here amber) */
+.toolkit-orb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--amber-dim);
+  border: 1.5px solid var(--amber-bdr);
+}
+
+/* Card title */
+.toolkit-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  line-height: 1.35;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Tags wrapper */
+.toolkit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 2px;
+}
+
+/* Individual tag pill */
+.tk-tag {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  transition: color var(--tr), border-color var(--tr), background var(--tr);
+  cursor: default;
+}
+.tk-tag:hover {
   color: var(--amber);
   border-color: var(--amber-bdr);
   background: var(--amber-dim);
@@ -1134,6 +1205,8 @@ html[data-theme="light"] .icon-dark  { display: none; }
   .about-cards-col { flex-direction: row; }
   .amber-card { flex: 1; }
 
+  .toolkit-grid { grid-template-columns: repeat(2, 1fr); }
+
   .contact-layout { grid-template-columns: 1fr; }
 
   .nav-links { display: none; }
@@ -1167,4 +1240,6 @@ html[data-theme="light"] .icon-dark  { display: none; }
   .about-cards-col { flex-direction: column; }
   .footer-inner { flex-direction: column; text-align: center; }
   .section-heading::after { margin: 10px auto 0; }
+  .toolkit-grid { grid-template-columns: 1fr; }
+  .toolkit-heading { font-size: 2rem; }
 }
